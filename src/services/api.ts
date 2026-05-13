@@ -1,4 +1,4 @@
-export const API_BASE = "http://localhost:5000";
+export const API_BASE = "https://phishguard-api-1e3j.onrender.com";
 const USE_MOCK = false;
 
 export type FeatureRow = {
@@ -18,8 +18,6 @@ export type AnalysisResult = {
   red_flags: string[];
   feature_breakdown: FeatureRow[];
 };
-
-// --- Mock data (used when USE_MOCK = true) ---
 
 const mockPhishing: AnalysisResult = {
   url: "http://paypal-secure.ru/login",
@@ -71,8 +69,6 @@ function pickMock(url: string): AnalysisResult {
 }
 
 const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
-
-// --- API calls ---
 
 export async function analyzeUrl(url: string): Promise<AnalysisResult> {
   if (USE_MOCK) {
